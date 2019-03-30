@@ -2,21 +2,23 @@
 
 namespace Bridge\Tests;
 
-use Bridge\HelloWorldService;
-use Bridge\HtmlFormatter;
-use Bridge\PlainTextFormatter;
+use HelloWorldService;
+use HtmlFormatter;
+use PlainTextFormatter;
 
-require __DIR__ . "/../Formatter.php";
-require __DIR__ . "/../Service.php";
+spl_autoload_register(function ($class) {
+    include __DIR__ . '/../' . $class . '.php';
+});
 
-foreach (glob("*.php") as $filename) {
-    if (file_exists($file = __DIR__ . '/../' . $filename)) {
-        require_once $file;
-    }
-}
-
+/**
+ * Class BridgeTest
+ * @package Bridge\Tests
+ */
 class BridgeTest
 {
+    /**
+     * Test bridge.
+     */
     public function test()
     {
         echo (new HelloWorldService(new PlainTextFormatter()))->get();
@@ -26,4 +28,5 @@ class BridgeTest
     }
 }
 
+// Run test
 (new BridgeTest())->test();

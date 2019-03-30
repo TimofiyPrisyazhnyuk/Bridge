@@ -1,7 +1,8 @@
 <?php
 
-namespace Bridge;
-
+/**
+ * Class Service
+ */
 abstract class Service
 {
     /**
@@ -25,5 +26,8 @@ abstract class Service
         $this->implementation = $printer;
     }
 
+    /**
+     * @return string
+     */
     abstract public function get(): string;
 }
